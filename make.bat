@@ -1,11 +1,11 @@
 @echo off
 
-if not exist ".\build\bin" mkdir .\build\bin
+if not exist ".\build" mkdir .\build\
 
-cmake -S . -B build/bin
+cmake -S . -B ./build
 
-msbuild .\build\bin\opgl.sln
+cmake --build ./build
 
 echo running opgl.exe ...
 echo:
-.\build\bin\Debug\opgl.exe
+.\build\src\Debug\opgl.exe
