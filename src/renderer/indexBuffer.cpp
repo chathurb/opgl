@@ -1,6 +1,6 @@
 #include "indexBuffer.h"
 
-#include "renderer.h"
+#include "utils.h"
 
 indexBuffer::indexBuffer(const unsigned int* data, unsigned int count)
     : m_count(count)

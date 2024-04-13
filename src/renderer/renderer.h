@@ -1,13 +1,11 @@
 #pragma once
 
-#define GLEW_STATIC
+#include "vertexArray.h"
+#include "indexBuffer.h"
+#include "shader.h"
 
-#include <GL/glew.h>
-
-#define GLCall(x) GLClearError();\
-    x;\
-    GLCheckError();
-
-void GLClearError();
-
-void GLCheckError();
+class renderer{
+public:
+    void Clear() const;
+    void Draw(const vertexArray& va, const indexBuffer& ib, const shader& sh);
+};

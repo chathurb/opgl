@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "renderer.h"
+#include "utils.h"
 
 struct vertexBufferElement
 {

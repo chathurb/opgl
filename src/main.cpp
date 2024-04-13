@@ -5,11 +5,12 @@
 
 #include <iostream>
 
-#include "renderer.h"
+#include "utils.h"
 #include "vertexBuffer.h"
 #include "indexBuffer.h"
 #include "vertexArray.h"
 #include "shader.h"
+#include "renderer.h"
 
 int main(void)
 {
@@ -65,6 +66,8 @@ int main(void)
         sh.Bind();
         sh.SetUniform4f("u_Color", 0.8f, 0.3f, 0.8f, 1.0f);
 
+        renderer renderer;
+
         va.Unbind();
         vb.Unbind();
         ib.Unbind();
@@ -77,15 +80,15 @@ int main(void)
         while (!glfwWindowShouldClose(window))
         {
             /* Render here */
-            glClear(GL_COLOR_BUFFER_BIT);
+            renderer.Clear();
             
             va.Bind();
 
             sh.Bind();
             sh.SetUniform4f("u_Color", red, 1.0f, 0.0f, 1.0f);
 
-            GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
-
+            renderer.Draw(va, ib, sh);
+            
             if(red > 1.0f)
                 red = 0.0f;
             

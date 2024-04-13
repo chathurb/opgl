@@ -1,16 +1,15 @@
 #include "renderer.h"
 
-#include <iostream>
-
-void GLClearError()
+void renderer::Clear() const
 {
-    while ( glGetError() != GL_NO_ERROR );
+    glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void GLCheckError()
+void renderer::Draw(const vertexArray& va, const indexBuffer& ib, const shader& sh)
 {
-    while ( GLenum error = glGetError() )
-    {
-        std::cout << "OpenGl Error : " << error << std::endl;
-    }
+    sh.Bind();
+    va.Bind();
+    ib.Bind();
+
+    GLCall(glDrawElements(GL_TRIANGLES, ib.m_count, GL_UNSIGNED_INT, nullptr));
 }
