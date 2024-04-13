@@ -1,6 +1,7 @@
 add_executable(${PROJECT_NAME} main.cpp)
 
 add_subdirectory(renderer)
+add_subdirectory(external)
 
 set(EXTERNAL_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/external)
 
