@@ -2,6 +2,7 @@ add_executable(${PROJECT_NAME} main.cpp)
 
 add_subdirectory(renderer)
 add_subdirectory(external)
+add_subdirectory(math)
 
 set(EXTERNAL_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/external)
 
@@ -9,6 +10,7 @@ target_include_directories(${PROJECT_NAME}
     PRIVATE ${EXTERNAL_DIRECTORY}/GLFW/include
     PRIVATE ${EXTERNAL_DIRECTORY}/GLEW/include
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/renderer
+    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/math
 )
 
 target_link_directories(${PROJECT_NAME}
@@ -16,4 +18,4 @@ target_link_directories(${PROJECT_NAME}
     PRIVATE ${EXTERNAL_DIRECTORY}/GLEW/lib/Release/x64
 )
 
-target_link_libraries(${PROJECT_NAME} glfw3 opengl32 glew32s renderer)
+target_link_libraries(${PROJECT_NAME} glfw3 opengl32 glew32s renderer math)

@@ -12,6 +12,7 @@
 #include "shader.h"
 #include "renderer.h"
 #include "texture.h"
+#include "rotation.cpp"
 
 int main(void)
 {
@@ -43,13 +44,14 @@ int main(void)
         float positions[] = {
             -0.5f, -0.5f, 0.0f, 0.0f,
              0.5f, -0.5f, 1.0f, 0.0f,
-             0.5f,  0.5f, 1.0f, 1.0f,
-            -0.5f,  0.5f, 0.0f, 1.0f
+             0.0f, 0.5f, 1.0f, 0.0f,
+            //  0.5f,  0.5f, 1.0f, 1.0f,
+            // -0.5f,  0.5f, 0.0f, 1.0f
         };
 
         unsigned int indices[] = {
             0, 1, 2,
-            2, 3, 0
+            // 2, 3, 0
         };
 
         GLCall(glEnable(GL_BLEND));
@@ -84,6 +86,7 @@ int main(void)
 
         float red = 0.0f;
         float increment = 0.05f;
+        int frameNumber = 0;
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
@@ -95,12 +98,16 @@ int main(void)
 
             sh.Bind();
 
+            sh.SetUniform4f("u_Color", 1.0f, 1.0f, 0.0f, 1.0f);
+
             renderer.Draw(va, ib, sh);
             
             if(red > 1.0f)
                 red = 0.0f;
             
             red += increment;
+            
+            rotate(vb, frameNumber++);
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);

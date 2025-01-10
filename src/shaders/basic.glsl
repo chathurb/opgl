@@ -25,5 +25,6 @@ uniform sampler2D u_Texture;
 void main()
 {
    vec4 texColor = texture(u_Texture, v_TexCoord);
-   color = texColor;
+   float gradient = gl_FragCoord.y / 480.0f;
+   color = mix(u_Color, vec4(0.0f, 0.0f, 0.0f, 0.0f), gradient);
 }
