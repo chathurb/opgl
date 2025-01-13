@@ -5,7 +5,7 @@
 
 void rotate(vertexBuffer& vb, int frameNumber)
 {
-    float theta = float(frameNumber) / 240.0f * M_PI;
+    float theta = float(frameNumber) / 60.0f * M_PI;
     float cosine = cosf(theta);
     float sine = sinf(theta);
 

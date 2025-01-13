@@ -98,7 +98,8 @@ int main(void)
 
             sh.Bind();
 
-            sh.SetUniform4f("u_Color", 1.0f, 1.0f, 0.0f, 1.0f);
+            sh.SetUniform4f("u_Color", red, 1.0f, 0.0f, 1.0f);
+            sh.SetUniform1f("u_Time", (float)increment++);
 
             renderer.Draw(va, ib, sh);
             
@@ -107,7 +108,7 @@ int main(void)
             
             red += increment;
             
-            rotate(vb, frameNumber++);
+            // rotate(vb, frameNumber++);
 
             /* Swap front and back buffers */
             glfwSwapBuffers(window);

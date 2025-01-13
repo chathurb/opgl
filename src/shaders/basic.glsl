@@ -4,11 +4,18 @@
 layout(location = 0) in vec4 position;
 layout(location = 1) in vec2 texCoord;
 
+uniform float u_Time;
+
 out vec2 v_TexCoord;
 
 void main()
 {
+   float modTime = mod(u_Time, 60.0f);
+   float theta = modTime / 60.0f * 2.0f * 3.14159f;
+
    gl_Position = position;
+   gl_Position.x = position.x * cos(theta) + position.y * sin(theta);
+   gl_Position.y = position.y * cos(theta) - position.x * sin(theta);
    v_TexCoord = texCoord;
 }
 
